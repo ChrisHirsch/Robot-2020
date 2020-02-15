@@ -36,6 +36,9 @@ class MyRobot(MagicRobot):
 
         #Shooter
         self.shooter_motorsList = dict(self.map.motorsMap.driveMotors)
+
+        #Intake
+        self.intake_motorsList = dict(self.map.motorsMap.driveMotors)
 	
     def teleopInit(self):
         #register button events
