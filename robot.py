@@ -10,12 +10,13 @@ from robotMap import RobotMap
 from components.driveTrain import DriveTrain
 from components.buttonManager import ButtonManager, ButtonEvent
 from examples.buttonManagerCallback import exampleCallback, simpleCallback, crashCallback
+from components.shooter import Shooter
 
 class MyRobot(MagicRobot):
     """
     Base robot class of Magic Bot Type
     """
-
+    shooter: Shooter
     driveTrain: DriveTrain
     buttonManager: ButtonManager
 
@@ -33,12 +34,15 @@ class MyRobot(MagicRobot):
         self.driveTrain_motorsList = dict(self.map.motorsMap.driveMotors)
         self.mult = 1 #Multiplier for values. Should not be over 1.
 
+        #Shooter
+        self.shooter_motorsList = dict(self.map.motorsMap.driveMotors)
+	
     def teleopInit(self):
         #register button events
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kA, ButtonEvent.kOnPress, exampleCallback)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnPress | ButtonEvent.kOnRelease, crashCallback)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart,  ButtonEvent.kWhilePressed, simpleCallback)
-
+    
     def teleopPeriodic(self):
         """
         Must include. Called running teleop.

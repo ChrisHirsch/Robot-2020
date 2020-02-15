@@ -50,22 +50,20 @@ driveMotors:
 
   intakeMotor:
     channel: 51
-    type: "SparkMax"
+    type: "CANTalon"
     inverted: True
     pid: Null
-    motorType: "Brushed"
+  
+  intakeFollower:
+    channel: 50
+    masterChannel: 51
+    type: "CANTalonFollower"
+    inverted: False
+    pid: Null
 
   shooterMotor:
     channel: 52
-    type: "CANTalonFX"
-    inverted: True
-    pid:
-      controlType: "Velocity"
-      feedbackDevice: 0
-      kPreScale: 6
-      kP: 0.0001
-      kI: 0
-      kD: 0
-      kF: 0
-      sensorPhase: True
-    motorType: "Brushless"
+    type: "SparkMax"
+    motorType: "Brushed"
+    inverted: False
+    pid: Null
