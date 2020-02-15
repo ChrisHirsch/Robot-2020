@@ -50,14 +50,14 @@ driveMotors:
 
   intakeMotor:
     channel: 51
-    type: "CANTalon"
+    type: "CANTalonSRX"
     inverted: True
     pid: Null
   
   intakeFollower:
     channel: 50
     masterChannel: 51
-    type: "CANTalonFollower"
+    type: "CANTalonSRXFollower"
     inverted: False
     pid: Null
 

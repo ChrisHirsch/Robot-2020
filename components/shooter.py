@@ -18,5 +18,14 @@ class Shooter:
     def setSpeed(self, speed):
         self.speed = speed
 
+    def intake(self):
+        self.speed = -1
+    
+    def shoot(self):
+        self.speed = 1
+
+    def stop(self):
+        self.speed = 0
+
     def execute(self):
         self.shooterMotor.set(self.speed)

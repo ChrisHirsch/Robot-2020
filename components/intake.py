@@ -14,7 +14,7 @@ class Intake:
             self.motors[motorDescKey] = motorHelper.createMotor(currentMotor)
 
         self.intakeMotor = self.motors['intakeMotor']
-    
+
     def setSpeed(self, speed):
         self.speed = speed
 
