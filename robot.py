@@ -8,6 +8,7 @@ from magicbot import MagicRobot
 
 from robotMap import RobotMap
 from components.driveTrain import DriveTrain
+from components.shooter import Shooter
 
 class MyRobot(MagicRobot):
     """
