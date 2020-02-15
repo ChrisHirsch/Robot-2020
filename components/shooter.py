@@ -8,8 +8,8 @@ class Shooter:
     def setup(self):
         self.motors = {}
         self.speed = 0
-        for motorDescKey in self.driveTrain_motorsList:
-            currentMotor = self.driveTrain_motorsList[motorDescKey]
+        for motorDescKey in self.shooter_motorsList:
+            currentMotor = self.shooter_motorsList[motorDescKey]
             print("{}".format(currentMotor))
             self.motors[motorDescKey] = motorHelper.createMotor(currentMotor)
 
