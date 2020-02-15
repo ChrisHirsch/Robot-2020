@@ -50,10 +50,10 @@ class MyRobot(MagicRobot):
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart,  ButtonEvent.kWhilePressed, simpleCallback)
         """
 
-        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kWhilePressed, self.shooter.shoot)
-        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kWhilePressed, self.shooter.intake)
+        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kOnPress, self.shooter.shoot)
+        #self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnPress,, self.shooter.intake)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kOnRelease, self.shooter.stop)
-        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnRelease, self.shooter.stop)
+        #self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnRelease, self.shooter.stop)
 
     def teleopPeriodic(self):
         """
@@ -62,8 +62,6 @@ class MyRobot(MagicRobot):
         self.controllerInput()
 
         self.driveTrain.setArcade(self.left, -self.leftHoriz)
-        self.shooter.setSpeed(.1)
-        self.intake.setSpeed(.1)
 
     def testInit(self):
         """

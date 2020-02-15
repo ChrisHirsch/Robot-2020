@@ -23,9 +23,12 @@ class Shooter:
     
     def shoot(self):
         self.speed = 1
+        print("shooting")
 
     def stop(self):
         self.speed = 0
+        print("stopping")
 
     def execute(self):
         self.shooterMotor.set(self.speed)
+        print("shooter execute")
