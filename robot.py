@@ -44,10 +44,17 @@ class MyRobot(MagicRobot):
 	
     def teleopInit(self):
         #register button events
+        """
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kA, ButtonEvent.kOnPress, exampleCallback)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnPress | ButtonEvent.kOnRelease, crashCallback)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart,  ButtonEvent.kWhilePressed, simpleCallback)
-    
+        """
+
+        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kWhilePressed, self.shooter.shoot)
+        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kWhilePressed, self.shooter.intake)
+        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kOnRelease, self.shooter.stop)
+        self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnRelease, self.shooter.stop)
+
     def teleopPeriodic(self):
         """
         Must include. Called running teleop.

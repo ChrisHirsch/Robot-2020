@@ -222,4 +222,4 @@ class SparkMaxFeedback(rev.CANSparkMax):
         if self.motorType == rev.MotorType.kBrushless:
             return self.PIDController.setReference(speed*self.pid['kPreScale'], self.ControlType, self.pid['feedbackDevice'])
         else:
-            rev.CANSparkMax.set(self, speed)
+            return rev.CANSparkMax.set(self, speed)
