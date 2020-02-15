@@ -65,7 +65,7 @@ class MyRobot(MagicRobot):
         """
         self.left = self.stick.getRawAxis(1) *self.mult
         self.right = self.stick.getRawAxis(5) *self.mult
-        self.leftHoriz = self.stick.getRawAxis(0)  *self.mult
+        self.leftHoriz = self.stick.getRawAxis(0) *self.mult
         self.rightHoriz = self.stick.getRawAxis(4) *self.mult
 
 
