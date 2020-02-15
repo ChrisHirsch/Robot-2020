@@ -51,8 +51,8 @@ class MyRobot(MagicRobot):
         """
 
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kOnPress, self.shooter.shoot)
-        #self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnPress,, self.shooter.intake)
         self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kStart, ButtonEvent.kOnRelease, self.shooter.stop)
+        #self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnPress,, self.shooter.intake)
         #self.buttonManager.registerButtonEvent(self.stick, XboxController.Button.kBack, ButtonEvent.kOnRelease, self.shooter.stop)
 
     def teleopPeriodic(self):
