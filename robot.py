@@ -14,7 +14,7 @@ class MyRobot(MagicRobot):
     """
     Base robot class of Magic Bot Type
     """
-
+    shooter: Shooter
     driveTrain: DriveTrain
 
     def createObjects(self):
@@ -30,6 +30,9 @@ class MyRobot(MagicRobot):
 
         self.driveTrain_motorsList = dict(self.map.motorsMap.driveMotors)
         self.mult = 1 #Multiplier for values. Should not be over 1.
+
+        #Shooter
+        self.shooter_motorsList = dict(self.map.motorsMap.driveMotors)
 
     def teleopPeriodic(self):
         """
