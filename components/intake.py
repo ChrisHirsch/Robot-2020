@@ -13,10 +13,10 @@ class Intake:
             print("{}".format(currentMotor))
             self.motors[motorDescKey] = motorHelper.createMotor(currentMotor)
 
-        self.shooterMotor = self.motors['shooterMotor']
+        self.intakeMotor = self.motors['intakeMotor']
     
     def setSpeed(self, speed):
         self.speed = speed
 
     def execute(self):
-        self.shooterMotor.set(self.speed)
+        self.intakeMotor.set(self.speed)
