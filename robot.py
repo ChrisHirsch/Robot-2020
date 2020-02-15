@@ -11,6 +11,7 @@ from components.driveTrain import DriveTrain
 from components.buttonManager import ButtonManager, ButtonEvent
 from examples.buttonManagerCallback import exampleCallback, simpleCallback, crashCallback
 from components.shooter import Shooter
+from components.intake import Intake
 
 class MyRobot(MagicRobot):
     """
@@ -19,6 +20,7 @@ class MyRobot(MagicRobot):
     shooter: Shooter
     driveTrain: DriveTrain
     buttonManager: ButtonManager
+    intake: Intake
 
     def createObjects(self):
         """
@@ -53,6 +55,8 @@ class MyRobot(MagicRobot):
         self.controllerInput()
 
         self.driveTrain.setArcade(self.left, -self.leftHoriz)
+        self.shooter.setSpeed(.1)
+        self.intake.setSpeed(.1)
 
     def testInit(self):
         """
