@@ -219,8 +219,7 @@ class SparkMaxFeedback(rev.CANSparkMax):
         """
         Overrides the default set() to allow for controll using the pid loop
         """
-        if self.motorDescription['type'] != "SparkMaxFollower":
+        if self.MotorType == rev.MotorType.kBrushless:
             return self.PIDController.setReference(speed*self.pid['kPreScale'], self.ControlType, self.pid['feedbackDevice'])
         else:
-            return self.PIDController.setReference(speed*self.pid['kPreScale'], self.ControlType, self.pid['feedbackDevice'])
-        return
+            rev.CANSparkMax.set(self, speed)
