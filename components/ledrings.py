@@ -3,9 +3,13 @@ from magicbot import StateMachine, state, tunable
 
 
 class LedRings(StateMachine):
+    compatString = ["doof"]
 
     sensorObjects: dio
     xboxMap: XboxMap
+
+    # Tunables
+    pulseSpeed = tunable(1)
 
     def __init__(self):
 
@@ -46,3 +50,8 @@ class LedRings(StateMachine):
     @state(first = True)
     def idle(self):
         pass
+
+    def execute(self):
+        
+        # Make it so #1
+        self.engage()
