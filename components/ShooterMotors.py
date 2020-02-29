@@ -1,9 +1,20 @@
+import logging
+from enum import IntEnum
+
+class Direction(IntEnum):
+    """Enum for intake direction."""
+    kForwards = 0
+    kBackwards = 1
+    kDisabled = 2
 
 class ShooterMotorCreation:
+    compatString = ["doof"]
 
-    motorsList: dict
+    logger: logging
+    motors_shooter: dict
+    motors_loader: dict
 
-    def setup(self):
+    def on_enable(self):
         self.intakeSpeed = 0
         self.loaderSpeed = 0
         self.shooterSpeed = 0
@@ -11,21 +22,27 @@ class ShooterMotorCreation:
         self.loader = False
         self.shooter = False
 
-        self.motors = self.motorsList
+        self.loaderMotor = self.motors_loader["loaderMotor"]
+        self.intakeMotor = self.motors_loader["intakeMotor"]
+        self.shooterMotor = self.motors_shooter["shooterMotor"]
 
-        self.loaderMotor = self.motors["loaderMotor"]
-        self.intakeMotor = self.motors["intakeMotor"]
-        self.shooterMotor = self.motors["shooterMotor"]
+        self.logger.info("Shooter Motor Component Created")
 
-        print("shooter motors created")
+    def runIntake(self, iSpeed, direction):
+        if direction == Direction.kForwards:  # Forwards
+            self.intakeSpeed = iSpeed
+        elif direction == Direction.kBackwards: # Backwards
+            self.intakeSpeed = -iSpeed
 
-    def runLoader(self, lSpeed):
-        self.loaderSpeed = lSpeed
-        self.loader = True
-
-    def runIntake(self, iSpeed):
-        self.intakeSpeed = iSpeed
         self.intake = True
+
+    def runLoader(self, lSpeed, direction):
+        if direction == Direction.kForwards: # Forwards
+            self.loaderSpeed = lSpeed
+        elif direction == Direction.kBackwards: # Backwards
+            self.loaderSpeed = -lSpeed
+
+        self.loader = True
 
     def runShooter(self, sSpeed):
         self.shooterSpeed = sSpeed
@@ -40,8 +57,14 @@ class ShooterMotorCreation:
     def stopShooter(self):
         self.shooter = False
 
-    def isLoaderActive(self):
+    def isIntakeRunning(self):
+        return self.intake
+
+    def isLoaderRunning(self):
         return self.loader
+
+    def isShooterRunning(self):
+        return self.shooter
 
     def execute(self):
         if self.intake:
