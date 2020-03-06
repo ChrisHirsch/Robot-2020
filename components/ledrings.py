@@ -1,11 +1,13 @@
 from wpilib import DigitalInput as dio
 from magicbot import StateMachine, state, tunable
+from components.breakSensors import BreakSensors, Sensors
 
 
 class LedRings(StateMachine):
+    """Statemachine to do LEDs"""
     compatString = ["doof"]
 
-    sensorObjects: dio
+    breakSensors: BreakSensors
     xboxMap: XboxMap
 
     # Tunables
@@ -18,6 +20,18 @@ class LedRings(StateMachine):
        
         # Make it so #1
         self.engage()
+
+    def on_enable(self):
+        """
+        Called when the bot is enabled. This will register our states with the proper code
+        """
+        self.breakSensors.registerSensorEvent(
+            self, 
+            "pulseRingsUp", 
+            Sensors.kShootingSensor, 
+            True, 
+            "shootInitShooting", 
+            "shootRunShooter")
 
 
     def pulseRingsUp(self):
